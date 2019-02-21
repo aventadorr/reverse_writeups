@@ -1,0 +1,28 @@
+from pwn import *
+import re
+
+#we know the serial 5B134977135E7D13 and name should be 8 chars.
+
+'''
+In [2]: xor(0x10,0x5b)
+Out[2]: 'K'
+
+In [3]: xor(0x20,0x13)
+Out[3]: '3'
+
+In [4]: xor(0x30,0x49)
+Out[4]: 'y'
+
+and repating for all chars like that
+'''
+
+x=xor(0x10,0x5b)
+x+=xor(0x20,0x13)
+x+=xor(0x30,0x49)
+x+=xor(0x10,0x77)
+x+=xor(0x20,0x13)
+x+=xor(0x30,0x5e)
+x+=xor(0x10,0x7d)
+x+=xor(0x20,0x13)
+
+print `x`
